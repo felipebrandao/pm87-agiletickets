@@ -16,13 +16,13 @@ public class CalculadoraDePrecos {
 		if(tipo.equals(TipoDeEspetaculo.CINEMA) || tipo.equals(TipoDeEspetaculo.SHOW)) {
 			//quando estiver acabando os ingressos... 
 			if(porcetagemDeLugaresDisponiveis(sessao) <= 0.05) { 
-				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
+				preco = reajustaPreco(sessao, 0.10);
 			} else {
 				preco = sessao.getPreco();
 			}
 		} else if(tipo.equals(TipoDeEspetaculo.BALLET) || tipo.equals(TipoDeEspetaculo.ORQUESTRA)) {
 			if(porcetagemDeLugaresDisponiveis(sessao) <= 0.50) { 
-				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
+				preco = reajustaPreco(sessao,0.20);
 			} else {
 				preco = sessao.getPreco();
 			}
@@ -36,6 +36,10 @@ public class CalculadoraDePrecos {
 		} 
 
 		return preco.multiply(BigDecimal.valueOf(quantidade));
+	}
+
+	private static BigDecimal reajustaPreco(Sessao sessao, double reajuste) {
+		return sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(reajuste)));
 	}
 
 	private static double porcetagemDeLugaresDisponiveis(Sessao sessao) {
