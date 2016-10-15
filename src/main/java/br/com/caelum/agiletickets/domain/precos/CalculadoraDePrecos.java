@@ -28,14 +28,9 @@ public class CalculadoraDePrecos {
 	private static BigDecimal ajustaPrecoPorQuantidadeDisponivel(
 			BigDecimal preco, Sessao sessao, double ocupacao, double ajuste) {
 		if (porcetagemDeLugaresDisponiveis(sessao) <= ocupacao) {
-			preco = reajustaPreco(sessao, ajuste);
+			preco = sessao.reajustaPreco(ajuste);
 		}
 		return preco;
-	}
-
-	private static BigDecimal reajustaPreco(Sessao sessao, double reajuste) {
-		return sessao.getPreco().add(
-				sessao.getPreco().multiply(BigDecimal.valueOf(reajuste)));
 	}
 
 	private static double porcetagemDeLugaresDisponiveis(Sessao sessao) {

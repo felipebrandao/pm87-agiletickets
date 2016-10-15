@@ -120,5 +120,9 @@ public class Sessao {
 	public BigDecimal getPreco() {
 		return preco;
 	}
+
+	public BigDecimal reajustaPreco(double reajuste) {
+		return preco.add(preco.multiply(BigDecimal.valueOf(reajuste)));
+	}
 	
 }
