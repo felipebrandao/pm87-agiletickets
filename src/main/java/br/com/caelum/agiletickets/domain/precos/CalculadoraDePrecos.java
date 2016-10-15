@@ -17,9 +17,7 @@ public class CalculadoraDePrecos {
 		} else if(tipo.equals(TipoDeEspetaculo.BALLET) || tipo.equals(TipoDeEspetaculo.ORQUESTRA)) {
 			preco = sessao.ajustaPrecoPorQuantidadeDisponivel(preco, 0.50, 0.20);
 			
-			if(sessao.getDuracaoEmMinutos() > 60){
-				preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
-			}
+			preco = sessao.ajustaPrecoPorDuracao(preco);
 		} 
 
 		return preco.multiply(BigDecimal.valueOf(quantidade));

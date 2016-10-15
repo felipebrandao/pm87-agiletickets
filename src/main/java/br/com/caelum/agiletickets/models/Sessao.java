@@ -137,5 +137,12 @@ public class Sessao {
 		}
 		return preco;
 	}
+
+	public BigDecimal ajustaPrecoPorDuracao(BigDecimal preco) {
+		if(getDuracaoEmMinutos() > 60){
+			return preco.add(getPreco().multiply(BigDecimal.valueOf(0.10)));
+		}
+		return preco;
+	}
 	
 }
