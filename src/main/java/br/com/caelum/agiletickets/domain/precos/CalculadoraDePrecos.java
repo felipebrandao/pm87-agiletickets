@@ -20,23 +20,13 @@ public class CalculadoraDePrecos {
 			} else {
 				preco = sessao.getPreco();
 			}
-		} else if(tipo.equals(TipoDeEspetaculo.BALLET)) {
+		} else if(tipo.equals(TipoDeEspetaculo.BALLET) || tipo.equals(TipoDeEspetaculo.ORQUESTRA)) {
 			if(porcetagemDeLugaresDisponiveis(sessao) <= 0.50) { 
 				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
 			} else {
 				preco = sessao.getPreco();
 			}
 			
-			if(sessao.getDuracaoEmMinutos() > 60){
-				preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
-			}
-		} else if(tipo.equals(TipoDeEspetaculo.ORQUESTRA)) {
-			if(porcetagemDeLugaresDisponiveis(sessao) <= 0.50) { 
-				preco = sessao.getPreco().add(sessao.getPreco().multiply(BigDecimal.valueOf(0.20)));
-			} else {
-				preco = sessao.getPreco();
-			}
-
 			if(sessao.getDuracaoEmMinutos() > 60){
 				preco = preco.add(sessao.getPreco().multiply(BigDecimal.valueOf(0.10)));
 			}
