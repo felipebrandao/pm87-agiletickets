@@ -129,5 +129,13 @@ public class Sessao {
 		return (totalIngressos - ingressosReservados)
 				/ totalIngressos.doubleValue();
 	}
+
+	public BigDecimal ajustaPrecoPorQuantidadeDisponivel(BigDecimal preco,
+			double ocupacao, double ajuste) {
+		if (porcetagemDeLugaresDisponiveis() <= ocupacao) {
+			preco = reajustaPreco(ajuste);
+		}
+		return preco;
+	}
 	
 }
