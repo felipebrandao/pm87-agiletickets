@@ -124,5 +124,10 @@ public class Sessao {
 	public BigDecimal reajustaPreco(double reajuste) {
 		return preco.add(preco.multiply(BigDecimal.valueOf(reajuste)));
 	}
+
+	public double porcetagemDeLugaresDisponiveis() {
+		return (totalIngressos - ingressosReservados)
+				/ totalIngressos.doubleValue();
+	}
 	
 }
